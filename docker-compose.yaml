@@ -22,6 +22,8 @@ services:
 
   app:
     build: .
+    environment:
+      DATABASE_CONNECTION_STRING: "Server=pgsqldb;Port=5432;Database=postgres;User Id=postgres;Password=password;"
     ports:
       - "7257:80"
     depends_on:
