@@ -7,15 +7,35 @@ using SeriesBackend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Database
 builder.Services.AddDbContext<PostgresContext>(options =>
-    options.UseNpgsql("Server=postgresqldb;Port=5432;Database=postgres;User Id=postgres;Password=password;"));
+    options.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING")
+                      ?? throw new ArgumentException()));
 
-builder.Services.AddSingleton<CategoriesRepository>();
-builder.Services.AddSingleton<CategoriesService>();
-builder.Services.AddSingleton<SeriesRepository>();
-builder.Services.AddSingleton<SeriesService>();
+// Repositories
+builder.Services.AddTransient<CategoriesRepository>();
+builder.Services.AddTransient<SeriesRepository>();
 
+// Services
+builder.Services.AddTransient<CategoriesService>();
+builder.Services.AddTransient<SeriesService>();
+
+// Controllers
 builder.Services.AddControllers();
+
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+            policy.AllowAnyHeader();
+        });
+});
+
+// Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(config =>
 {
@@ -26,25 +46,17 @@ builder.Services.AddSwaggerGen(config =>
 
     config.IncludeXmlComments(xmlPath);
 });
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("*", policy =>
-    {
-        policy.AllowAnyOrigin();
-        policy.AllowAnyMethod();
-        policy.AllowAnyHeader();
-    });
-});
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseCors("*");
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
