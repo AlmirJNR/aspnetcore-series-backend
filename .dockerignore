@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+
+.git
+.gitignore
+
+[Bb]in/
+[Oo]bj/
+[Pp]roperties/

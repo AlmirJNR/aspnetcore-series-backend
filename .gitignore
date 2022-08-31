@@ -1,0 +1,7 @@
+.vscode/
+.idea/
+
+[Bb]in/
+[Oo]bj/
+
+postgres/
