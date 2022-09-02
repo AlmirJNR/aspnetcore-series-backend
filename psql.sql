@@ -1,13 +1,13 @@
 -- noinspection SqlNoDataSourceInspectionForFile
 
-CREATE TABLE category
+CREATE TABLE IF NOT EXISTS category
 (
     id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name       TEXT NOT NULL,
     deleted_at TIMESTAMP
 );
 
-CREATE TABLE series
+CREATE TABLE IF NOT EXISTS series
 (
     id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title        TEXT NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE series
     deleted_at   TIMESTAMP
 );
 
-CREATE TABLE series_category
+CREATE TABLE IF NOT EXISTS series_category
 (
     series_id   UUID REFERENCES series (id)   NOT NULL,
     category_id UUID REFERENCES category (id) NOT NULL,
