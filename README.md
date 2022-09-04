@@ -34,5 +34,5 @@ you can access the swagger ui (endpoints, controllers, etc) at:
 ### PgAdmin
 Is a web Open Source administration and development platform for PostgreSQL
 and it is included with the docker compose file,
-if you want to see the database with it, just uncomment lines 33-41,
+if you want to see the database with it, just 
 build it and access [http://localhost:8080](http://localhost:8080)
