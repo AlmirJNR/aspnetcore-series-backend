@@ -1,7 +1,5 @@
-.vscode/
 .idea/
+.vscode/
 
 [Bb]in/
 [Oo]bj/
-
-postgres/
