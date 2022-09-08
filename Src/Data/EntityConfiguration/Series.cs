@@ -27,7 +27,9 @@ public class SeriesEntityConfiguration: IEntityTypeConfiguration<Series>
 
         builder.Property(e => e.ImageUrl).HasColumnName("image_url");
 
-        builder.Property(e => e.ReleaseDate).HasColumnName("release_date");
+        builder.Property(e => e.ReleaseDate)
+            .HasColumnType("timestamp without time zone")
+            .HasColumnName("release_date");
 
         builder.Property(e => e.Title).HasColumnName("title");
 
