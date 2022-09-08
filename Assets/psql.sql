@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS series
     title        TEXT NOT NULL,
     description  TEXT,
     image_url    TEXT,
-    release_date DATE,
+    release_date TIMESTAMP,
     added_at     TIMESTAMP        DEFAULT now(),
     deleted_at   TIMESTAMP
 );
