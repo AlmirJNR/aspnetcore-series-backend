@@ -2,12 +2,12 @@ using Data.Models;
 
 namespace Contracts.Categories.Dto;
 
-public class UpdateCategoryDto
+public readonly record struct UpdateCategoryDto()
 {
-    public string? Name { get; set; }
+    public string? Name { get; init; } = null;
 
-    public Category ToModel() => new Category()
+    public Category ToModel() => new()
     {
-        Name = this.Name
+        Name = Name
     };
 }

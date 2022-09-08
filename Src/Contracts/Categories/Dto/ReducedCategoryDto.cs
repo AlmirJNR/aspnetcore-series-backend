@@ -2,10 +2,10 @@ using Data.Models;
 
 namespace Contracts.Categories.Dto;
 
-public class ReducedCategoryDto
+public readonly record struct ReducedCategoryDto()
 {
-    public Guid Id { get; set; }
-    public string? Name { get; set; }
+    public Guid Id { get; init; } = Guid.Empty;
+    public string? Name { get; init; } = null;
 
     public static ReducedCategoryDto FromModel(Category category) => new()
     {

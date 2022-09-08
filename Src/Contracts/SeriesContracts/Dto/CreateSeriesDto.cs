@@ -2,18 +2,18 @@ using Data.Models;
 
 namespace Contracts.SeriesContracts.Dto;
 
-public class CreateSeriesDto
+public readonly record struct CreateSeriesDto()
 {
-    public string Title { get; set; } = null!;
-    public string? Description { get; set; }
-    public string? ImageUrl { get; set; }
-    public DateOnly? ReleaseDate { get; set; }
+    public string Title { get; init; } = null!;
+    public string? Description { get; init; } = null;
+    public string? ImageUrl { get; init; } = null;
+    public DateTime? ReleaseDate { get; init; } = null;
 
     public Series ToModel() => new()
     {
-        Title = this.Title,
-        Description = this.Description,
-        ImageUrl = this.ImageUrl,
-        ReleaseDate = this.ReleaseDate,
+        Title = Title,
+        Description = Description,
+        ImageUrl = ImageUrl,
+        ReleaseDate = ReleaseDate,
     };
 }
