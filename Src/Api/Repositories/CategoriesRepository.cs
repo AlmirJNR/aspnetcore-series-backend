@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SeriesBackend.Repositories;
 
-public class CategoriesRepository : IRepository<Category>
+public class CategoriesRepository : ICategoryRepository
 {
     private readonly PostgresContext _postgresContext;
     private readonly DbSet<Category> _categoriesEntity;

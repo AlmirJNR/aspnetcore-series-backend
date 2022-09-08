@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SeriesBackend.Repositories;
 
-public class SeriesRepository : IRepository<Series>
+public class SeriesRepository : ISeriesRepository
 {
     private readonly PostgresContext _postgresContext;
     private readonly DbSet<Series> _seriesEntity;

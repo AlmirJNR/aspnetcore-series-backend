@@ -1,5 +1,6 @@
 using Contracts.Categories.Dto;
 using Contracts.Categories.Interfaces;
+using Contracts.Repositories.Interfaces;
 using Data.Models;
 using SeriesBackend.Repositories;
 
@@ -7,9 +8,9 @@ namespace SeriesBackend.Services;
 
 public class CategoriesService : ICategoryService
 {
-    private readonly CategoriesRepository _categoriesRepository;
+    private readonly ICategoryRepository _categoriesRepository;
 
-    public CategoriesService(CategoriesRepository categoriesRepository)
+    public CategoriesService(ICategoryRepository categoriesRepository)
     {
         _categoriesRepository = categoriesRepository;
     }

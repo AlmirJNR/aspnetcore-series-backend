@@ -1,3 +1,4 @@
+using Contracts.Repositories.Interfaces;
 using Contracts.SeriesContracts.Dto;
 using Contracts.SeriesContracts.Interfaces;
 using Data.Models;
@@ -7,10 +8,10 @@ namespace SeriesBackend.Services;
 
 public class SeriesService : ISeriesService
 {
-    private readonly SeriesRepository _seriesRepository;
-    private readonly CategoriesRepository _categoriesRepository;
+    private readonly ISeriesRepository _seriesRepository;
+    private readonly ICategoryRepository _categoriesRepository;
 
-    public SeriesService(SeriesRepository seriesRepository, CategoriesRepository categoriesRepository)
+    public SeriesService(ISeriesRepository seriesRepository, ICategoryRepository categoriesRepository)
     {
         _seriesRepository = seriesRepository;
         _categoriesRepository = categoriesRepository;
