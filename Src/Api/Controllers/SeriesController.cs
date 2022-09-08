@@ -1,7 +1,7 @@
 using Contracts.SeriesContracts.Dto;
+using Contracts.SeriesContracts.Interfaces;
 using Data.Models;
 using Microsoft.AspNetCore.Mvc;
-using SeriesBackend.Services;
 
 namespace SeriesBackend.Controllers;
 
@@ -9,9 +9,9 @@ namespace SeriesBackend.Controllers;
 [Route("api/v1/[controller]")]
 public class SeriesController : ControllerBase
 {
-    private readonly SeriesService _seriesService;
+    private readonly ISeriesService _seriesService;
 
-    public SeriesController(SeriesService seriesService)
+    public SeriesController(ISeriesService seriesService)
     {
         _seriesService = seriesService;
     }

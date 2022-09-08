@@ -1,7 +1,7 @@
 using Contracts.Categories.Dto;
+using Contracts.Categories.Interfaces;
 using Data.Models;
 using Microsoft.AspNetCore.Mvc;
-using SeriesBackend.Services;
 
 namespace SeriesBackend.Controllers;
 
@@ -9,9 +9,9 @@ namespace SeriesBackend.Controllers;
 [Route("api/v1/[controller]")]
 public class CategoriesController : ControllerBase
 {
-    private readonly CategoriesService _categoriesService;
+    private readonly ICategoryService _categoriesService;
 
-    public CategoriesController(CategoriesService categoriesService)
+    public CategoriesController(ICategoryService categoriesService)
     {
         _categoriesService = categoriesService;
     }
